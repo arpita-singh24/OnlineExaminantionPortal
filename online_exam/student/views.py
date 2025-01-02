@@ -6,4 +6,4 @@ def home(request):
     return render(request, 'student/student_dashboard.html')
 
 def live_exam(request):
-    return HttpResponse("this is live exam dashboard")
+    return render(request, 'student/live.html')
