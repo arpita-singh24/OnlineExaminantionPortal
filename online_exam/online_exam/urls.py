@@ -10,5 +10,6 @@ urlpatterns = [
     path('teacher/', include('teacher.urls')),
 
     path('', views.home, name='home'),
-    path('admin_home', views.admin_home, name='admin_home'),
+    path('admin_login', views.admin_login, name='admin_login'),
+    path('admin_dashboard', views.admin_dashboard, name='admin_dashboard'),
 ]

@@ -1,9 +1,17 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render, redirect, HttpResponse
+from .forms import RegisterForm
+from .models import Student
 
 # Create your views here.
 
-def home(request):
+def home_view(request):
+    return render(request, 'student/student_view.html')
+
+def dashboard(request):
     return render(request, 'student/student_dashboard.html')
 
-def live_exam(request):
-    return render(request, 'student/live.html')
+def login(request):
+    return render(request, 'student/student_login.html')
+
+def signup(request):
+    return render(request, 'student/student_signup.html')

@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,7 +40,6 @@ INSTALLED_APPS = [
     'project_admin',
     'student',
     'teacher',
-    
 ]
 
 MIDDLEWARE = [
@@ -120,7 +118,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Directory for static files in development
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Collected static files for production
+
+# Media files (Uploaded content like profile pictures)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Directory for uploaded media files
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
