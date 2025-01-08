@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Register</title>
+    <title>Teacher Register Form</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- FontAwesome CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #f5f7fb;
@@ -24,16 +23,9 @@
             border-radius: 15px;
             display: flex;
             flex-wrap: wrap;
-            max-width: 1000px;
+            max-width: 700px;
             margin: 50px auto;
             overflow: hidden;
-        }
-
-        .register-image {
-            flex: 1;
-            background: url('https://via.placeholder.com/400') no-repeat center;
-            background-size: cover;
-            min-height: 400px;
         }
 
         .register-form {
@@ -47,6 +39,7 @@
             color: #333;
             margin-bottom: 10px;
             text-align: center;
+            
         }
 
         .register-form p {
@@ -146,69 +139,62 @@
         }
     </style>
 </head>
+
 <body>
-<div class="container-fluid">
     <div class="register-container">
-        <div class="register-image"></div>
+
+        <!-- Registration Form -->
         <div class="register-form">
-            <h2>Student Register</h2>
-            
-            <!-- Messages Section -->
-            {% if messages %}
-                <div class="alert-container">
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }} mt-3" role="alert">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-            
-            <form method="post" enctype="multipart/form-data" action="{% url 'student_signup' %}">
-                {% csrf_token %}
+            <h2>Teacher Register Form</h2>
+            <form class="mt-4">
                 <div class="upload-section">
                     <div class="profile-pic" id="profilePreview">+</div>
-                    <input type="file" id="profileUpload" name="profile_picture" style="display: none;" accept="image/*">
-                    <button type="button" class="btn btn-primary" onclick="document.getElementById('profileUpload').click();">Upload Image</button>
+                    <input type="file" id="profileUpload" style="display: none;" accept="image/*">
+                    <button type="button" class="btn-upload" onclick="document.getElementById('profileUpload').click();">Upload Image</button>
                 </div>
-                <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
-                <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
-                <input type="tel" class="form-control" name="phone" placeholder="Phone" required>
-                <input type="email" class="form-control" name="email" placeholder="Email" required>
-                <input type="password" class="form-control" name="password1" placeholder="Password" required>
-                <input type="password" class="form-control" name="password2" placeholder="Confirm Password" required>
+                <input type="text" class="form-control" placeholder="First Name" required>
+                <input type="text" class="form-control" placeholder="Last Name" required>
+                <input type="tel" class="form-control" placeholder="Phone" required>
+                <input type="email" class="form-control" placeholder="Email" required>
+                <input type="password" class="form-control" placeholder="Password" required>
                 <button type="submit" class="btn btn-primary w-100 mt-3">Sign up</button>
             </form>
             <div class="form-footer mt-4">
-                <p>Already have an account? <a href="{% url 'student_login' %}">Login</a></p>
+                <p>Already have an account? <a href="#">Login</a></p>
             </div>
         </div>
-        
     </div>
-</div>
-
-<!-- Footer -->
- {% include "project_admin/footer.html" %}
 
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    // Profile Image Preview
-    const profileUpload = document.getElementById("profileUpload");
-    const profilePreview = document.getElementById("profilePreview");
 
-    profileUpload.addEventListener("change", function () {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                profilePreview.style.backgroundImage = `url(${e.target.result})`;
-                profilePreview.textContent = "";
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-</script>
+
+    <!-- Footer -->
+     {% include "project_admin/footer.html" %}
+
+  <!-- Footer -->
+    
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Profile Image Preview
+        const profileUpload = document.getElementById("profileUpload");
+        const profilePreview = document.getElementById("profilePreview");
+
+        profileUpload.addEventListener("change", function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    profilePreview.style.backgroundImage = `url(${e.target.result})`;
+                    profilePreview.textContent = "";
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </body>
+
 </html>

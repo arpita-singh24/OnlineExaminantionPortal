@@ -89,10 +89,22 @@
                 NIELIT
             </a>
             <div class="ms-auto">
+               <a href="{% url 'logout' %}">
                 <button class="btn btn-danger btn-sm">LOGOUT</button>
+               </a>
             </div>
         </div>
     </nav>
+
+    <!-- Display Messages -->
+        {% if messages %}
+        <div class="alert alert-success" role="alert">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+
 
     <!-- Container -->
     <div class="container-fluid">
@@ -101,7 +113,7 @@
             <div class="col-lg-2 collapse d-lg-block sidebar" id="sidebar">
                 <div class="text-center mb-4">
                     <img src="https://via.placeholder.com/100" alt="Teacher" class="img-fluid rounded-circle mb-2">
-                    <h6>STUDENT NAME</h6>
+                    <h6>{{ user.first_name }} {{ user.last_name }}</h6>
                     <p>(STU ID: 001)</p>
                 </div>
                 <a href="#"><i class="bi bi-grid me-2"></i>Dashboard</a>

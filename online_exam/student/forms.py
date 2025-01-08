@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Student
 
-class RegisterForm(UserCreationForm):
+class StudentForm(UserCreationForm):
     email = forms.EmailField(required=True)
     contact = forms.CharField(max_length=15, required=True)
     profile_picture = forms.ImageField(required=True)
